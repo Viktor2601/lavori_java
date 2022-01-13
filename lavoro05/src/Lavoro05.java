@@ -12,9 +12,8 @@ public class Lavoro05 {
             In output devi dare tutte le parole con più di 5 caratteri
         */
 
-        String msgBenvenuto = """
-                                    Benvenuto.... Inserisci tutte le parole che vuoi!!
-                                    Per terminare digitare FINE...""";
+        String msgBenvenuto = "Benvenuto.... Inserisci tutte le parole che vuoi!!" +
+                                " Per terminare digitare FINE...";
         System.out.println(msgBenvenuto);
 
         String parole[] = new String [100];
@@ -40,18 +39,24 @@ public class Lavoro05 {
             {
                 parole [contatore] = parola;
                 contatore++;
-                
+
             }
             
         }
 
+        scannerParole.close();
+
+        String msg = "Queste sono le parole con più di 5 caratteri:";
+        System.out.println(msg);
+
         for (String parola : parole)
         {
             if (parola.length() > 5)
-             {
-                System.out.println(parola);
-             }
-
+            {
+                msg = "-" + parola + "(ha " + parola.length() + " caratteri)";
+                System.out.println(msg);
+            }
+            
              if (parola.isEmpty() == true)
             {
                 break;
