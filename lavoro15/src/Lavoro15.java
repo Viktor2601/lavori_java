@@ -17,38 +17,71 @@ public class Lavoro15
     */
     public static void main(String[] args) throws Exception 
     {
-        Scanner scannerNumeri = new Scanner(System.in);
+        for (int d:divisoriPropri(1))
+        {
+            if (d != 0)
+                System.out.println(d);
+        }
 
-        int divisoriPropri[] = new int[100];
-
-        System.out.print("Inserisci un numero -> ");
-        int numero = scannerNumeri.nextInt();
-
-        scannerNumeri.close();
+        statoNumero(sommaDivisoriPropri(12), 12);
 
         int contatore = 1;
-        int sommaDivisori = 0;
+        int numero = 18;
+        while (contatore < numero)
+        {
+            System.out.print(contatore + ":");
+            statoNumero(sommaDivisoriPropri(contatore), contatore);
+            contatore++;
+        }
+    }
+
+    static int[] divisoriPropri (int numero)
+    {
+        int contatore = 1;
+        int divisoriPropri[] = new int[100];
 
         while (contatore < numero)
         {
             if (numero % contatore == 0)
             {
                 divisoriPropri[contatore-1] = contatore;
-                sommaDivisori += contatore;
             }
 
             contatore++;
         }
 
-        if (sommaDivisori == numero)
+        return divisoriPropri;
+    }
+
+    static int sommaDivisoriPropri (int numero)
+    {
+        int sommaDivisori = 0;
+        int contatore = 1;
+
+        while (contatore < numero)
+        {
+            if (numero % contatore == 0)
+            {
+                sommaDivisori += contatore;
+            }
+
+            contatore ++;
+        }
+
+        return sommaDivisori;
+    }
+
+    static void statoNumero (int sommaDivisoriPropri, int numero)
+    {
+        if (sommaDivisoriPropri == numero)
         {
             System.out.println("Perfetto");
         }
         else
         {
-            if (sommaDivisori > numero)
+            if (sommaDivisoriPropri > numero)
             {
-                System.out.print("Abbondante");
+                System.out.println("Abbondante");
             }
             else
             {
