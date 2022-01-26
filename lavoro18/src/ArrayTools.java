@@ -108,6 +108,27 @@ public class ArrayTools
         return copia;
     }
 
+    public static int[] unisciArray (int array1[], int array2[])
+    {
+        int arrayUnito[] = new int[array1.length + array2.length];
+        int lunghezzaArray1 = array1.length;
+        int lunghezzaArray2 = array2.length;
+
+        for (int i =0; i < arrayUnito.length;i++)
+        {
+            if (i < lunghezzaArray1)
+            {
+                arrayUnito[i] = array1[i];
+            }
+            else
+            {
+                arrayUnito[i] = array2[i-lunghezzaArray2];
+            }
+        }
+        
+        return arrayUnito;
+    }
+
     public static int[] generaArrayCasuale (int grandezzaArray, int numeroMax)
     {
         int risultato[] = new int[grandezzaArray];
