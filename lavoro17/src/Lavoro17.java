@@ -26,6 +26,11 @@ public class Lavoro17
 
 		String giorno = Tool.giornoSettimana(2);
 		Tool.stampa(giorno);
-		
+
+        int dimensioneArray1 = (int) Tool.inserisciNumero("Dimmi la dimensione del primo array -> ");
+		int dimensioneArray2 = (int) Tool.inserisciNumero("Dimmi la dimensione del secondo array -> ");
+
+        int array1[] = new int[dimensioneArray1];
+        int array2[] = new int[dimensioneArray2];
     }
 }

@@ -1,7 +1,5 @@
 package lavoro18.src;
 
-import java.lang.reflect.Array;
-
 public class Lavoro18 
 {
     public static void main(String[] args) throws Exception 
