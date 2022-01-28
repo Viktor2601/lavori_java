@@ -23,5 +23,11 @@ public class Lavoro18
         System.out.println("MIN -> " + ArrayTools.min(input));
         System.out.println("MEDIA -> " + ArrayTools.media(input));
         System.out.println("TROVATO -> " + ArrayTools.ricercaNumero(input, 101));
+   
+        System.out.println("------------------------------------------------------");
+        int array1[] = {1,2,3,4};
+        int array2[] = {3,4,5,6,4};
+        int arrayComune[] = ArrayTools.numeriInComune(array1, array2);
+        ArrayTools.stampaArray(arrayComune);
     }
 }

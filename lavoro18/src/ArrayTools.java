@@ -114,18 +114,16 @@ public class ArrayTools
         int lunghezzaArray1 = array1.length;
         int lunghezzaArray2 = array2.length;
 
-        for (int i =0; i < arrayUnito.length;i++)
+        for (int i = 0; i < lunghezzaArray1; i++)
         {
-            if (i < lunghezzaArray1)
-            {
-                arrayUnito[i] = array1[i];
-            }
-            else
-            {
-                arrayUnito[i] = array2[i-lunghezzaArray2];
-            }
+            arrayUnito[i] = array1[i];
         }
         
+        for (int i =0; i < lunghezzaArray2; i++)
+        {
+            arrayUnito[i+lunghezzaArray1] = array2[i];
+        }
+
         return arrayUnito;
     }
 
@@ -146,4 +144,102 @@ public class ArrayTools
         Random random = new Random();
         return random.nextInt(max);
     }
+
+    public static int[] numeriInComune (int array1[], int array2[])
+    {
+        int risultato[] = {};
+
+        for (int n : array1)
+        {
+            if (ricercaNumero(risultato, n) == true)
+            {
+                continue;
+            }
+
+            if (ricercaNumero(array2, n) == true)
+            {
+                int tmp[] = new int[1];
+                tmp[0] = n;
+                risultato = unisciArray(risultato, tmp);
+            }
+        }
+
+        return risultato;
+    }
+
+    public static boolean contieneValori (int array1[], int array2[])
+    {
+        boolean contieneValori = true;
+
+        for (int numero : array2)
+        {
+            if (ricercaNumero(array1, numero) == false)
+            {
+                contieneValori = false;
+                break;
+            }
+        }
+
+        return contieneValori;
+    }
+
+    /**
+     * ritorna l'indice dell'elemento trovato altrimenti -1
+     * @param array
+     * @param numeroDaCercare
+     * @return 
+     */
+    public static int ricercaIndice (int array[], int numeroDaCercare)
+    {
+       return ricercaIndice(array, numeroDaCercare, 0);
+    }
+
+    public static int ricercaIndice (int array[], int numeroDaCercare, int start)
+    {
+       for (int indice = start; indice < array.length; indice++)
+       {
+           if (array[indice] == numeroDaCercare)
+           {
+               return indice;
+           }
+       }
+
+       return -1;
+    }
+
+    public static boolean contieneSequenza (int array1[], int array2[])
+    {
+        boolean contieneSequenza =false;
+
+        if (array2.length == 0)
+        {
+            return false; 
+        }
+
+        if (array2.length > array1.length)
+        {
+            return false;
+        }
+        
+        int numero = array2[0];
+        int start =ricercaIndice(array1, numero);
+
+        while (start != -1 && array1.length >= array2.length+start && !contieneSequenza)
+        {
+            contieneSequenza = true;
+            for (int i = 0; i < array2.length; i++)
+            {
+                if (array1[start+i] != array2[i])
+                {
+                    contieneSequenza = false;
+                    break;
+                }
+            }
+            start =ricercaIndice(array1, numero, start + 1);
+        }
+
+        return contieneSequenza;
+    }
+
+
 }
